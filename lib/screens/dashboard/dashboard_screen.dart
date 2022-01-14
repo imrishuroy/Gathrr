@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:gathrr/constants/constants.dart';
 import '/screens/home/home_screen.dart';
 import '/screens/notification/notification_screen.dart';
 import '/screens/profile/profile_screen.dart';
@@ -53,18 +54,16 @@ class _DashBoardState extends State<DashBoard> {
     return Scaffold(
       body: _widgetOptions.elementAt(_selectedIndex),
       bottomNavigationBar: FABBottomAppBar(
-        backgroundColor: Colors.black,
-        // centerItemText: 'New Round',
+        backgroundColor: Colors.white,
         color: Colors.grey,
-        selectedColor: Colors.white,
+        selectedColor: primaryColor,
         notchedShape: const CircularNotchedRectangle(),
         onTabSelected: _selectedTab,
         items: [
-          FABBottomAppBarItem(iconData: Icons.show_chart, text: 'Locker\nRoom'),
-          FABBottomAppBarItem(
-              iconData: Icons.play_lesson_outlined, text: 'Range'),
-          FABBottomAppBarItem(iconData: Icons.explore, text: 'Explore'),
-          FABBottomAppBarItem(iconData: Icons.sports_golf, text: 'Golfer'),
+          FABBottomAppBarItem(iconData: Icons.home),
+          FABBottomAppBarItem(iconData: Icons.bookmark_border),
+          FABBottomAppBarItem(iconData: Icons.notifications_outlined),
+          FABBottomAppBarItem(iconData: Icons.person_outline),
         ],
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,

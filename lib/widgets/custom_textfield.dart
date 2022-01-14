@@ -10,24 +10,36 @@ final _textFieldBorder = OutlineInputBorder(
 );
 
 class CustomTextField extends StatelessWidget {
-  const CustomTextField({Key? key}) : super(key: key);
+  final String hintText;
+  final IconData prefixIcon;
+  final Color? fillColor;
+  final Color? hintTextColor;
+
+  const CustomTextField({
+    Key? key,
+    required this.hintText,
+    required this.prefixIcon,
+    this.fillColor = Colors.white,
+    this.hintTextColor = Colors.white,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return TextFormField(
       decoration: InputDecoration(
-        hintText: ' Email',
+        hintText: hintText,
         hintStyle: GoogleFonts.nunitoSans(
-          color: Colors.white,
+          color: hintTextColor,
           fontWeight: FontWeight.w700,
           fontSize: 16.0,
         ),
-        prefixIcon: const Icon(
-          Icons.mail_outline,
+        prefixIcon: Icon(
+          prefixIcon,
           color: Colors.white,
         ),
         filled: true,
-        fillColor: Colors.white.withOpacity(0.4),
+        // fillColor: Colors.white.withOpacity(0.4),
+        fillColor: fillColor?.withOpacity(0.4),
         border: _textFieldBorder,
         enabledBorder: _textFieldBorder,
         focusedBorder: _textFieldBorder,

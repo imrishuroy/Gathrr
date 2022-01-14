@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:gathrr/constants/constants.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import 'widgets/category_widget.dart';
@@ -41,7 +42,7 @@ class HomeScreen extends StatelessWidget {
                     Icons.search,
                     color: Colors.grey,
                   ),
-                  suffixIcon: const Icon(Icons.sort),
+                  suffixIcon: const Icon(Icons.tune),
                   filled: true,
                   fillColor: Colors.white.withOpacity(0.4),
                   border: _textFieldBorder,
@@ -59,7 +60,19 @@ class HomeScreen extends StatelessWidget {
                 ),
               ),
               const SizedBox(height: 20.0),
-              const OneEventCard(),
+              SizedBox(
+                height: 290.0,
+                child: ListView.builder(
+                  scrollDirection: Axis.horizontal,
+                  itemCount: trendingEvents.length,
+                  itemBuilder: (context, index) {
+                    final event = trendingEvents[index];
+                    return OneEventCard(
+                      event: event,
+                    );
+                  },
+                ),
+              ),
               const SizedBox(height: 30.0),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,

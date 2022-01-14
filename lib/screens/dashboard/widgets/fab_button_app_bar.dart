@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 
 class FABBottomAppBarItem {
-  FABBottomAppBarItem({required this.iconData, required this.text});
+  FABBottomAppBarItem({required this.iconData});
   IconData iconData;
-  String text;
 }
 
 class FABBottomAppBar extends StatefulWidget {
@@ -35,7 +34,7 @@ class FABBottomAppBar extends StatefulWidget {
     required this.items,
     this.centerItemText,
     this.height = 60.0,
-    this.iconSize = 24.0,
+    this.iconSize = 27.0,
     required this.backgroundColor,
     required this.color,
     required this.selectedColor,
@@ -71,6 +70,7 @@ class FABBottomAppBarState extends State<FABBottomAppBar> {
     items.insert(items.length >> 1, _buildMiddleTabItem());
 
     return BottomAppBar(
+      elevation: 6.0,
       shape: widget.notchedShape,
       child: Row(
         mainAxisSize: MainAxisSize.max,
@@ -83,25 +83,7 @@ class FABBottomAppBarState extends State<FABBottomAppBar> {
 
   Widget _buildMiddleTabItem() {
     return Expanded(
-      child: SizedBox(
-        height: widget.height,
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            SizedBox(height: widget.iconSize),
-            // Text(
-            //   widget.centerItemText,
-            //   // style: TextStyle(color: widget.color),
-            //   //  textAlign: TextAlign.center,
-
-            //   style: const TextStyle(
-            //     color: Colors.white,
-            //   ),
-            // ),
-          ],
-        ),
-      ),
+      child: SizedBox(height: widget.iconSize),
     );
   }
 
@@ -118,20 +100,10 @@ class FABBottomAppBarState extends State<FABBottomAppBar> {
           type: MaterialType.transparency,
           child: InkWell(
             onTap: () => onPressed(index),
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: <Widget>[
-                Icon(item.iconData, color: color, size: widget.iconSize),
-                Text(
-                  item.text,
-                  textAlign: TextAlign.center,
-                  style: TextStyle(
-                    color: color,
-                    fontSize: 13.0,
-                  ),
-                )
-              ],
+            child: Icon(
+              item.iconData,
+              color: color,
+              size: widget.iconSize,
             ),
           ),
         ),
