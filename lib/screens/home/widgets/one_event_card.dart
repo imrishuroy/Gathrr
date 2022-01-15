@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:gathrr/constants/constants.dart';
 import 'package:gathrr/models/event.dart';
+import 'package:gathrr/widgets/display_image.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class OneEventCard extends StatelessWidget {
@@ -33,9 +34,8 @@ class OneEventCard extends StatelessWidget {
                           topLeft: Radius.circular(12.0),
                           topRight: Radius.circular(12.0),
                         ),
-                        child: Image.network(
-                          event?.image ?? errorImage,
-                          fit: BoxFit.cover,
+                        child: DisplayImage(
+                          imageUrl: event?.image,
                         ),
                       ),
                     ),

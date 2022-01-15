@@ -1,10 +1,27 @@
 import 'package:flutter/material.dart';
-import 'package:gathrr/constants/constants.dart';
-import 'package:gathrr/widgets/custom_button.dart';
-import 'package:gathrr/widgets/custom_textfield.dart';
+import 'package:gathrr/screens/gps/gps_screen.dart';
+import '/constants/constants.dart';
+
+import '/widgets/custom_button.dart';
+import '/widgets/custom_textfield.dart';
 
 class SignUpScreen extends StatelessWidget {
-  const SignUpScreen({Key? key}) : super(key: key);
+  SignUpScreen({Key? key}) : super(key: key);
+
+  static const String routeName = '/signup';
+
+  static Route route() {
+    return MaterialPageRoute(
+      settings: const RouteSettings(name: routeName),
+      builder: (_) => SignUpScreen(),
+    );
+  }
+
+  final _nameController = TextEditingController();
+  final _emailController = TextEditingController();
+
+  final _passwordController = TextEditingController();
+  final _confirmPasswordController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -52,35 +69,43 @@ class SignUpScreen extends StatelessWidget {
               ),
             ),
             const SizedBox(height: 40.0),
-            const CustomTextField(
+            CustomTextField(
+              textController: _nameController,
               hintText: 'Name',
               prefixIcon: Icons.person,
-              fillColor: primaryColor,
+              fillColor: primaryColor.withOpacity(0.15),
               hintTextColor: primaryColor,
             ),
             const SizedBox(height: 25.0),
-            const CustomTextField(
+            CustomTextField(
+              textController: _emailController,
               hintText: 'Email',
               prefixIcon: Icons.mail,
-              fillColor: primaryColor,
+              fillColor: primaryColor.withOpacity(0.15),
               hintTextColor: primaryColor,
             ),
             const SizedBox(height: 25.0),
-            const CustomTextField(
+            CustomTextField(
+              textController: _passwordController,
               hintText: 'Password',
               prefixIcon: Icons.lock,
-              fillColor: primaryColor,
+              fillColor: primaryColor.withOpacity(0.15),
               hintTextColor: primaryColor,
             ),
             const SizedBox(height: 25.0),
-            const CustomTextField(
+            CustomTextField(
+              textController: _confirmPasswordController,
               hintText: 'Confirm Passowrd',
               prefixIcon: Icons.lock,
-              fillColor: primaryColor,
+              fillColor: primaryColor.withOpacity(0.15),
               hintTextColor: primaryColor,
             ),
             const SizedBox(height: 50.0),
-            const CustomButton(label: 'Register'),
+            CustomButton(
+              label: 'Register',
+              onPressed: () =>
+                  Navigator.of(context).pushNamed(GpsScreen.routeName),
+            ),
             const SizedBox(height: 20.0),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
@@ -93,7 +118,7 @@ class SignUpScreen extends StatelessWidget {
                   ),
                 ),
                 TextButton(
-                  onPressed: () {},
+                  onPressed: () => Navigator.of(context).pop(),
                   child: const Text(
                     'Login',
                     style: TextStyle(

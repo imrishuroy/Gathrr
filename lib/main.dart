@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:gathrr/constants/constants.dart';
-import '/screens/dashboard/dashboard_screen.dart';
+import 'config/custom_router.dart';
+import 'constants/constants.dart';
+import '/screens/login/login_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -17,7 +18,9 @@ class MyApp extends StatelessWidget {
         primaryColor: primaryColor,
       ),
       debugShowCheckedModeBanner: false,
-      home: const DashBoard(),
+      //home: const LoginScreen(),
+      onGenerateRoute: CustomRouter.onGenerateRoute,
+      initialRoute: LoginScreen.routeName,
     );
   }
 }

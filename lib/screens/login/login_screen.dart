@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:gathrr/constants/constants.dart';
-import 'package:gathrr/screens/forgot-password/forgot_password_screen.dart';
+import 'package:gathrr/screens/gps/gps_screen.dart';
+import '/constants/constants.dart';
+import '/screens/forgot-password/forgot_password_screen.dart';
+import '/screens/sign-up/signup_screen.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 final _textFieldBorder = OutlineInputBorder(
@@ -12,7 +14,16 @@ final _textFieldBorder = OutlineInputBorder(
 );
 
 class LoginScreen extends StatelessWidget {
+  static const String routeName = '/login';
+
   const LoginScreen({Key? key}) : super(key: key);
+
+  static Route route() {
+    return MaterialPageRoute(
+      settings: const RouteSettings(name: routeName),
+      builder: (_) => const LoginScreen(),
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -107,7 +118,8 @@ class LoginScreen extends StatelessWidget {
                         primary: primaryColor,
                         shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(12.0))),
-                    onPressed: () {},
+                    onPressed: () =>
+                        Navigator.of(context).pushNamed(GpsScreen.routeName),
                     child: Text(
                       'Login',
                       style: GoogleFonts.nunitoSans(
@@ -117,6 +129,31 @@ class LoginScreen extends StatelessWidget {
                       ),
                     ),
                   ),
+                ),
+                const SizedBox(height: 20.0),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(
+                      'Don\'t have an account ?',
+                      style: TextStyle(
+                        color: Colors.grey.shade700,
+                        fontSize: 16.0,
+                      ),
+                    ),
+                    TextButton(
+                      onPressed: () => Navigator.of(context)
+                          .pushNamed(SignUpScreen.routeName),
+                      child: const Text(
+                        'SignUp',
+                        style: TextStyle(
+                          color: primaryColor,
+                          fontSize: 17.0,
+                          fontWeight: FontWeight.w700,
+                        ),
+                      ),
+                    )
+                  ],
                 )
               ],
             ),

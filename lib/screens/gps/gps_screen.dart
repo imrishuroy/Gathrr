@@ -1,10 +1,19 @@
 import 'package:flutter/material.dart';
-import 'package:gathrr/constants/constants.dart';
-import 'package:gathrr/widgets/custom_button.dart';
+import 'package:gathrr/screens/dashboard/dashboard_screen.dart';
+import '/constants/constants.dart';
+import '/widgets/custom_button.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class GpsScreen extends StatelessWidget {
+  static const String routeName = '/gps-screen';
   const GpsScreen({Key? key}) : super(key: key);
+
+  static Route route() {
+    return MaterialPageRoute(
+      settings: const RouteSettings(name: routeName),
+      builder: (_) => const GpsScreen(),
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -36,8 +45,10 @@ class GpsScreen extends StatelessWidget {
               ),
             ),
             SizedBox(height: _canvas.height * 0.2),
-            const CustomButton(
+            CustomButton(
               label: 'Turn on GPS',
+              onPressed: () =>
+                  Navigator.of(context).pushNamed(DashBoard.routeName),
             ),
           ],
         ),

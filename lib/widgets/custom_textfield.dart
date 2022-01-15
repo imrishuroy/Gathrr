@@ -14,13 +14,15 @@ class CustomTextField extends StatelessWidget {
   final IconData prefixIcon;
   final Color? fillColor;
   final Color? hintTextColor;
+  final TextEditingController textController;
 
   const CustomTextField({
     Key? key,
     required this.hintText,
     required this.prefixIcon,
-    this.fillColor = Colors.white,
+    required this.fillColor,
     this.hintTextColor = Colors.white,
+    required this.textController,
   }) : super(key: key);
 
   @override
@@ -39,7 +41,7 @@ class CustomTextField extends StatelessWidget {
         ),
         filled: true,
         // fillColor: Colors.white.withOpacity(0.4),
-        fillColor: fillColor?.withOpacity(0.4),
+        fillColor: fillColor,
         border: _textFieldBorder,
         enabledBorder: _textFieldBorder,
         focusedBorder: _textFieldBorder,

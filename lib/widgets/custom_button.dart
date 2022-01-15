@@ -7,12 +7,14 @@ class CustomButton extends StatelessWidget {
   final Color? color;
   final double? height;
   final double? width;
+  final VoidCallback onPressed;
 
   const CustomButton({
     Key? key,
     required this.label,
     this.color,
     this.height = 70,
+    required this.onPressed,
     this.width = double.infinity,
   }) : super(key: key);
 
@@ -26,7 +28,7 @@ class CustomButton extends StatelessWidget {
             primary: primaryColor,
             shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(12.0))),
-        onPressed: () {},
+        onPressed: onPressed,
         child: Text(
           label,
           style: GoogleFonts.nunitoSans(

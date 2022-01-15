@@ -7,7 +7,15 @@ import '/screens/saved/saved_screen.dart';
 import 'widgets/fab_button_app_bar.dart';
 
 class DashBoard extends StatefulWidget {
+  static const String routeName = '/dashboard';
   const DashBoard({Key? key}) : super(key: key);
+
+  static Route route() {
+    return MaterialPageRoute(
+      settings: const RouteSettings(name: routeName),
+      builder: (_) => const DashBoard(),
+    );
+  }
 
   @override
   State<DashBoard> createState() => _DashBoardState();
@@ -35,7 +43,7 @@ class _DashBoardState extends State<DashBoard> {
       width: 65.0,
       child: FittedBox(
         child: FloatingActionButton(
-          backgroundColor: Colors.green,
+          backgroundColor: primaryColor,
           onPressed: () {},
           tooltip: 'Increment',
           child: const Icon(
